@@ -578,8 +578,3 @@ function submitForm(e){
 
 // -------------------------------------------------------------------
 // .env
-
-CLIENT_ID = '725020510946-sqomfu343ivji7mr3ickabp87bnbkpvk.apps.googleusercontent.com';
-CLIENT_SECRET = 'civllzMAF6YhBVR5vN8xYlQr';
-REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-REFRESH_TOKEN = '4/0AY0e-g6bqn_8jZwfTenxWkP6ngB8YVRzFGsB5GWftjB8AQumWXHu366ncCl_rg-Gu-GopA';
