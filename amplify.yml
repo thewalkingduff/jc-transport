@@ -13,5 +13,5 @@ frontend:
     files:
       - '**/*'
   cache:
-    directories:
-      - $HOME/.npm
+    paths:
+      - node_modules/**/*
