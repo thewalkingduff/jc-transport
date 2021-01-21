@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const port = process.env.port || 3000;
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8000;
+  }
 const ejs = require("ejs");
 
 const app = express()
@@ -36,8 +39,4 @@ app.get('/why', (req, res) =>{
     res.render('why')
 })
 
-
-
-app.listen(port, function(){
-    console.log(`Server is listening on port: ${port} `)
-})
+app.listen(port);
