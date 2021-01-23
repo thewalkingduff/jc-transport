@@ -87,10 +87,6 @@
     cursor: pointer;
 }
 
-/* .fa-bars:hover {
-    color: #F58702;
-} */
-
 .background-img {
     position: absolute;
     top: 0;
@@ -100,8 +96,6 @@
     object-fit: cover;
     opacity: .8;
 }
-
-
 
 .overlay {
     position: absolute;
@@ -187,12 +181,6 @@
     transform: scale(0.5) translateY(-15px);
 }
 
-/* .social li a i:hover {
-    filter: none;
-    color: #F58702;
-} */
-
-
 .menu {
     position: absolute;
     top: 0;
@@ -219,13 +207,6 @@
     color: var(--overlay-color);
 }
 
-/* .driver-app {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: 1fr;
-} */
-
 .fa-envelope-square {
     color: #000;
     opacity: .8;
@@ -237,9 +218,6 @@
     opacity: .8;
     padding-bottom: 10px;
 }
-
-
-
 
 
 @media(max-width: 1200px) {
