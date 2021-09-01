@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 
 let port = process.env.PORT;
 if (port == null || port == "") {
@@ -15,7 +14,7 @@ const aboutContent = "Based just north of Dallas, JC Transport's offers unmatche
 
 app.set('view engine', 'ejs')
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 
 app.use(express.static('public'))
 
