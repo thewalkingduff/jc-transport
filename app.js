@@ -41,4 +41,6 @@ app.get('/why', (req, res) =>{
     res.render('why')
 })
 
-app.listen(port);
+app.listen(port, () => {
+    console.log(`App listening at http://localhost:${port}`)
+});
