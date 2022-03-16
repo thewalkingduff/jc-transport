@@ -1,15 +1,38 @@
 const express = require("express");
 const app = express()
+const bodyParser = require('body-parser')
 let port = process.env.PORT;
 if (port == null || port == "") {
     port = 8000;
   }
 
+
+
 app.set('view engine', 'ejs')
 
-app.use(express.urlencoded({extended: true}))
+// app.use(express.urlencoded({extended: true}))
 
 app.use(express.static('public'))
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+const { body, validationResult } = require('express-validator');
+
+app.post('/email',
+    body('email').isEmail().normalizeEmail(),
+    (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                success: false,
+                errors: errors.array()
+            });
+        }
+
+        res.status(200).render('thankyou')
+    });
 
 app.get('/', (req, res) =>{
     res.render('home')  
@@ -33,6 +56,9 @@ app.get('/driverapp', (req, res) =>{
 
 app.get('/why', (req, res) =>{
     res.render('why')
+})
+app.get('/thankyou', (req, res) =>{
+    res.render('thankyou')
 })
 
 app.listen(port, () => {
