@@ -36,7 +36,12 @@
 
                 <!--TO DO VALIDATION-->
 
-                <form name="contact" method="POST" data-netlify="true" onSubmit="submit">
+                <form
+                id="contact-form"
+                method="POST"
+                action="send"
+                enctype="multipart/form-data"
+                >
                     
                     <p>
                         <label>Name</label>
@@ -63,12 +68,8 @@
                         <textarea name="message" id="message" rows="5" required></textarea>
                     </p>
                     
-                    <div class="field">
-                        <div data-netlify-recaptcha='true'></div>
-                    </div>
-                    
                     <p class="full">
-                        <button type="submit">Submit</button>
+                        <button type="submit" value="submit">Submit</button>
                     </p>
                 
                 </form>

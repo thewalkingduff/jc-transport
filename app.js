@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express()
 const bodyParser = require('body-parser')
+const nodemailer = require("nodemailer");
+const multiparty = require("multiparty");
+require("dotenv").config();
 let port = process.env.PORT;
 if (port == null || port == "") {
     port = 8000;
@@ -19,20 +22,56 @@ app.use(bodyParser.json());
 
 const { body, validationResult } = require('express-validator');
 
-app.post('/email',
-    body('email').isEmail().normalizeEmail(),
-    (req, res) => {
-        const errors = validationResult(req);
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com", //replace with your email provider
+    port: 587,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASS,
+    },
+  });
 
-        if (!errors.isEmpty()) {
-            return res.status(400).json({
-                success: false,
-                errors: errors.array()
-            });
+  // verify connection configuration
+transporter.verify(function (error, success) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Server is ready to take our messages");
+    }
+  });
+  
+  
+
+
+app.post("/send", (req, res) => {
+    //1.
+    let form = new multiparty.Form();
+    let data = {};
+    form.parse(req, function (err, fields) {
+      console.log(fields);
+      Object.keys(fields).forEach(function (property) {
+        data[property] = fields[property].toString();
+      });
+  
+      //2. You can configure the object however you want
+      const mail = {
+        from: data.name,
+        to: 'senorduff@gmail.com',
+        text: `${data.name} <${data.email}> \n${data.message}`,
+      };
+  
+      //3.
+      transporter.sendMail(mail, (err, data) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send("Something went wrong.");
+        } else {
+          res.status(200).render('thankyou');
         }
-
-        res.status(200).render('thankyou')
+      });
     });
+  });
+  
 
 app.get('/', (req, res) =>{
     res.render('home')  
