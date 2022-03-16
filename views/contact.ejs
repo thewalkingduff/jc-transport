@@ -36,39 +36,40 @@
 
                 <!--TO DO VALIDATION-->
 
-                <form method="POST" data-netlify="true">
+                <form
+                id="contact-form"
+                method="POST"
+                action="send"
+                enctype="multipart/form-data"
+                >
                     
                     <p>
                         <label>Name</label>
-                        <input type="text" id="name" name="name">
+                        <input type="text" id="name" name="name" required>
                     </p>
                     
                     <p>
                         <label>Company</label>
-                        <input type="text" id="company" name="company">
+                        <input type="text" id="company" name="company" required>
                     </p>
                     
                     <p>
                         <label>Email Address</label>
-                        <input type="text" id="email" name="email">
+                        <input type="email" id="email" name="email" required>
                     </p>
                     
                     <p>
                         <label>Phone Number</label>
-                        <input type="text" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" required>
                     </p>
                     
                     <p class="full">
                         <label>Message</label>
-                        <textarea name="message" id="message" rows="5"></textarea>
+                        <textarea name="message" id="message" rows="5" required></textarea>
                     </p>
                     
-                    <div class="field">
-                        <div data-netlify-recaptcha='true'></div>
-                    </div>
-                    
                     <p class="full">
-                        <button type="submit">Submit</button>
+                        <button type="submit" value="submit">Submit</button>
                     </p>
                 
                 </form>
